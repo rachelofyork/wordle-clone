@@ -20,9 +20,11 @@ const keys3 = ["Z", "C", "V", "B", "N", "M"];
         })}
         </div>
         <div className="line3">
+            < Key keyVal={"Enter"} bigKey/>
             {keys3.map((key) => {
           return < Key keyVal={key} />;
         })}
+        < Key keyVal={"Delete"} bigKey />
         </div>
     </div>
     )
