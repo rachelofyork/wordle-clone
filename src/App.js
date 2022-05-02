@@ -12,8 +12,10 @@ function App() {
     <div className="App">
       <nav><h1>Wordle</h1></nav>
       <AppContext.Provider value={{guesses, setGuesses}}> 
-      <Guesses />
+      <div className='wrapper'>
+        <Guesses />
       <Keyboard />
+      </div>
       </AppContext.Provider>
     </div>
 
