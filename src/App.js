@@ -10,6 +10,8 @@ function App() {
   const [guesses, setGuesses] = useState(guessesDefault) /*pulls in matrix from Words.js and sets it as the default state for Guesses*/
   const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPos: 0}) 
   /* above state keeps track of attempt and letter position you're on*/
+
+  const correctWord = "RIGHT";
   
   const onSelectLetter = (keyVal) => {
       if (currentAttempt > 4) return; /*stops after 5 letters are typed*/
@@ -39,7 +41,8 @@ function App() {
   return (
     <div className="App">
       <nav><h1>Wordle</h1></nav>
-      <AppContext.Provider value={{guesses, setGuesses, currentAttempt, setCurrentAttempt, onSelectLetter, onEnter, onDelete}}> 
+      <AppContext.Provider 
+      value={{guesses, setGuesses, currentAttempt, setCurrentAttempt, onSelectLetter, onEnter, onDelete, correctWord}}> 
       <div className='wrapper'>
         <Guesses />
       <Keyboard />
