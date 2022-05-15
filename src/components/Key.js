@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../App";
 
 export default function Key({keyVal, bigKey}){
-     const {guesses, setGuesses, currentAttempt, setCurrentAttempt, onSelectLetter, onEnter, onDelete} = useContext(AppContext); /*need to import the current board state*/
+     const { onSelectLetter, onEnter, onDelete } = useContext(AppContext); /*need to import the current board state*/
 
     const selectLetter = () => {
         if (keyVal === "Enter"){
