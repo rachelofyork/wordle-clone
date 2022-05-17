@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { guessesDefault } from "../Words";
+import { guessesDefault } from "./Words";
 import Letter from "./Letter";
 
 export default function Guesses(){
