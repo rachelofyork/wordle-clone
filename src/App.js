@@ -11,6 +11,8 @@ function App() {
   const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPos: 0});
   /* above state keeps track of attempt and letter position you're on*/
   const [wordSet, setWordSet] = useState(new Set());
+  const [disabledLetters, setDisabledLetters] = useState([]);
+  /*to create an array of letters than have already been guessed but aren't in the word*/
 
   const correctWord = "RIGHT";
 
@@ -44,6 +46,9 @@ function App() {
       alert("Word not found!");
     }
     
+    if (currentWord === correctWord) {
+      alert("You won!")
+    }
   };
 
   const onDelete = () => {
@@ -60,7 +65,8 @@ function App() {
     <div className="App">
       <nav><h1>Wordle</h1></nav>
       <AppContext.Provider 
-      value={{guesses, setGuesses, currentAttempt, setCurrentAttempt, onSelectLetter, onEnter, onDelete, correctWord}}> 
+      value=
+      {{guesses, setGuesses, currentAttempt, setCurrentAttempt, onSelectLetter, onEnter, onDelete, correctWord, setDisabledLetters, disabledLetters}}> 
       <div className='wrapper'>
         <Guesses />
       <Keyboard />
