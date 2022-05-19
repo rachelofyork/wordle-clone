@@ -12,15 +12,17 @@ function App() {
   const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPos: 0});
   /* above state keeps track of attempt and letter position you're on*/
   const [wordSet, setWordSet] = useState(new Set());
+  const [correctWord, setCorrectWord] = useState("");
   const [disabledLetters, setDisabledLetters] = useState([]);
   /*to create an array of letters than have already been guessed but aren't in the word*/
   const [gameOver, setGameOver] = useState({gameOver: false, guessedWord: false});
 
-  const correctWord = "RIGHT";
+ 
 
   useEffect(() => {
     generateWordSet().then((words) => {
       setWordSet(words.wordSet);
+      setCorrectWord(words.newWord);
     });
   }, [/*this is an empty dependancy list to make this only run once*/]);
   
@@ -48,7 +50,7 @@ function App() {
       alert("Word not found!");
     }
     
-    if (currentWord === correctWord) {
+    if (currentWord.toLowerCase() === correctWord) {
       setGameOver({gameOver: true, guessedWord: true});
       return;
     }

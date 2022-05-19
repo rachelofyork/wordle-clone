@@ -12,13 +12,15 @@ export const guessesDefault = [
 
 export const generateWordSet = async () => {
     let wordSet;
+    let newWord;
     await fetch(wordBank)
     .then((response) => response.text())
     .then((result) => {
         const wordArray = result.split("\r\n") /*need to create an array to create a set*/
+        newWord = wordArray[Math.floor(Math.random() * wordArray.length)] /*grabs a random word from the array*/
         wordSet = new Set(wordArray) /*this creates a set from the array we created above*/
     });
-    return { wordSet };
+    return { wordSet, newWord };
 }
 /*reads wordle-bank.txt and transforms it into a set*/
 /*async function because we need to use fetch api from JS*/

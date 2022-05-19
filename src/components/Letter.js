@@ -3,11 +3,10 @@ import { AppContext } from "../App";
 
 
 export default function Letter({ letterPosition, attemptValue }){
-    const {guesses, correctWord, currentAttempt, disabledLetters, setDisabledLetters} = useContext(AppContext);
+    const {guesses, correctWord, currentAttempt, setDisabledLetters} = useContext(AppContext);
     const letter = guesses[attemptValue][letterPosition];
-
-    const correct = correctWord[letterPosition] === letter;
-    const almost = !correct && letter !== "" && correctWord.includes(letter);
+    const correct = correctWord.toUpperCase()[letterPosition] === letter;
+    const almost = !correct && letter !== "" && correctWord.toUpperCase().includes(letter);
     /*to be almost it can't be correct, can't be empty, the correctWord must include this letter*/
 
     const letterState = 
