@@ -1,6 +1,7 @@
 import './App.css';
 import Guesses from './components/Guesses.js';
 import Keyboard from './components/Keyboard.js';
+import GameOver from './components/GameOver';
 import { guessesDefault, generateWordSet } from './components/Words.js';
 import { createContext, useEffect, useState } from "react"; /*Gets access to AppContext API to help with state management */
 
@@ -13,6 +14,7 @@ function App() {
   const [wordSet, setWordSet] = useState(new Set());
   const [disabledLetters, setDisabledLetters] = useState([]);
   /*to create an array of letters than have already been guessed but aren't in the word*/
+  const [gameOver, setGameOver] = useState({gameOver: false, guessedWord: false});
 
   const correctWord = "RIGHT";
 
@@ -47,7 +49,11 @@ function App() {
     }
     
     if (currentWord === correctWord) {
-      alert("You won!")
+      setGameOver({gameOver: true, guessedWord: true});
+      return;
+    }
+    if (currentAttempt.attempt === 5) {
+      setGameOver({gameOver: true, guessedWord: false});
     }
   };
 
@@ -66,10 +72,21 @@ function App() {
       <nav><h1>Wordle</h1></nav>
       <AppContext.Provider 
       value=
-      {{guesses, setGuesses, currentAttempt, setCurrentAttempt, onSelectLetter, onEnter, onDelete, correctWord, setDisabledLetters, disabledLetters}}> 
+      {{guesses, 
+      setGuesses, 
+      currentAttempt, 
+      setCurrentAttempt,
+      onSelectLetter, 
+      onEnter, 
+      onDelete, 
+      correctWord, 
+      setDisabledLetters, 
+      disabledLetters,
+      gameOver,
+      }}> 
       <div className='wrapper'>
         <Guesses />
-      <Keyboard />
+     {gameOver.gameOver ? <GameOver /> : <Keyboard />}   
       </div>
       </AppContext.Provider>
     </div>
