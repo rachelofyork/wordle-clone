@@ -4,7 +4,7 @@ import Letter from "./Letter";
 
 export default function Guesses(){
 return (
-<div className="guesses">
+<div className="guesses ">
 
 <div className="row"> 
 <Letter letterPosition={0} attemptValue={0} /> 

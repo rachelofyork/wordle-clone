@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import Guesses from './components/Guesses.js';
 import Keyboard from './components/Keyboard.js';
 import GameOver from './components/GameOver';
@@ -86,12 +87,13 @@ function App() {
       disabledLetters,
       gameOver,
       }}> 
-      <div className='wrapper'>
+      <div className="wrapper container">
         <Guesses />
      {gameOver.gameOver ? <GameOver /> : <Keyboard />}   
       </div>
       </AppContext.Provider>
     </div>
+  
 
   );
 }
